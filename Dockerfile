@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y munin supervisor nginx spawn-fcgi logro
     && chown munin:munin /var/cache/munin/www
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY contrib/templates/munstrap/ munin.conf /etc/munin/
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY munin.conf /etc/munin/munin.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN chmod +x /docker-entrypoint.sh
