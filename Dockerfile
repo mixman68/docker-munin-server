@@ -1,6 +1,7 @@
 FROM debian:buster-backports
 
-RUN apt-get update && apt-get install -y munin supervisor nginx spawn-fcgi logrotate curl \
+RUN apt-get update && apt-get install -y supervisor nginx spawn-fcgi logrotate curl \
+    && apt-get install -t buster-backports -y munin \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
